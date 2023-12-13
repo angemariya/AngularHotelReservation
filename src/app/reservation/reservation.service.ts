@@ -17,8 +17,8 @@ export class ReservationService {
 
   //CREATE
   addReservation(reservation: Reservation): void {
+    reservation.id = Date.now().toString()
     this.reservations.push(reservation);
-    console.log(this.reservations);
     localStorage.setItem("reservations", JSON.stringify(this.reservations));
   }
 
