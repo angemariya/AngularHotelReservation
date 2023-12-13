@@ -8,6 +8,7 @@
         <p>Check-out date: {{reservation.checkOutDate | date}}</p>
         <p>Room number: {{reservation.roomNumber}}</p>
         <button (click)="deleteReservation(reservation.id)" > Delete</button>
+        <button [routerLink]='["/edit", reservation.id]' >Edit</button>
     </li>
 </ul>
 
