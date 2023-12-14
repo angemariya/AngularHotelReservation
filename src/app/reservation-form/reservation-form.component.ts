@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ReservationService } from '../reservation/reservation.service';
 import { Reservation } from '../models/reservation';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { HomeComponent } from '../home/home.component';
+
 @Component({
   selector: 'app-reservation-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, HomeComponent, RouterModule],
   templateUrl: './reservation-form.component.html',
   styleUrl: './reservation-form.component.css'
 })
@@ -43,12 +45,10 @@ export class ReservationFormComponent implements OnInit {
     if (this.reservationForm.valid) {
       let reservation: Reservation = this.reservationForm.value
       let id = this.activatedRoute.snapshot.paramMap.get("id");
+     
       if (id) {
         // Update
-        let reservation = this.reservationService.getReservation(id);
-        if (reservation) {
-          this.reservationService.updateReservation(id, reservation)
-        }
+        this.reservationService.updateReservation(id, reservation)
       } else {
         //Create new
         this.reservationService.addReservation(reservation)
