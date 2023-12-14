@@ -1,15 +1,15 @@
-<button [routerLink]='[""]'>Back</button>
+<button class="btn btn-light mb-3" [routerLink]='[""]'>Back</button>
 <h2>
     Reservation List
 </h2>
-<ul *ngIf="reservations.length; else noReservation">
-    <li *ngFor="let reservation of reservations">
-        <p>Guest: {{reservation.guestName}}</p>
-        <p>Check-in date: {{reservation.checkInDate | date}}</p>
-        <p>Check-out date: {{reservation.checkOutDate | date}}</p>
-        <p>Room number: {{reservation.roomNumber}}</p>
-        <button (click)="deleteReservation(reservation.id)" > Delete</button>
-        <button [routerLink]='["/edit", reservation.id]' >Edit</button>
+<ul class="list-group list-group-flush" *ngIf="reservations.length; else noReservation">
+    <li class="list-group-item" *ngFor="let reservation of reservations">
+        <p>Guest: <b>{{reservation.guestName}}</b></p>
+        <p>Check-in date: <b>{{reservation.checkInDate | date}}</b> </p>
+        <p>Check-out date: <b>{{reservation.checkOutDate | date}}</b></p>
+        <p>Room number: <b>{{reservation.roomNumber}}</b></p>
+        <button class="btn btn-danger me-1" (click)="deleteReservation(reservation.id)" > Delete</button>
+        <button class="btn btn-warning me-1" [routerLink]='["/edit", reservation.id]' >Edit</button>
     </li>
 </ul>
 
