@@ -5,14 +5,16 @@
 <ul class="list-group list-group-flush" *ngIf="reservations.length; else noReservation">
     <li class="list-group-item" *ngFor="let reservation of reservations">
         <p>Guest: <b>{{reservation.guestName}}</b></p>
-        <p>Check-in date: <b>{{reservation.checkInDate | date}}</b> </p>
+        <p>Check-in date: <b>{{reservation.checkInDate | date}}</b></p>
         <p>Check-out date: <b>{{reservation.checkOutDate | date}}</b></p>
         <p>Room number: <b>{{reservation.roomNumber}}</b></p>
-        <button class="btn btn-danger me-1" (click)="deleteReservation(reservation.id)" > Delete</button>
-        <button class="btn btn-warning me-1" [routerLink]='["/edit", reservation.id]' >Edit</button>
+        <div>
+            <button class="btn btn-danger me-1" (click)="deleteReservation(reservation.id)"> Delete</button>
+            <button class="btn btn-warning me-1" [routerLink]="['/edit', reservation.id]">Edit</button>
+        </div>
     </li>
 </ul>
 
-<ng-template #noReservation >
+<ng-template #noReservation>
     <p>No reservation available.</p>
 </ng-template>
