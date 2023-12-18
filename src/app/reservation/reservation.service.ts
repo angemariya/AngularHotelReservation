@@ -32,7 +32,7 @@ export class ReservationService {
 
   //UPDATE
   updateReservation(id: string, updatedReservation: Reservation): Observable<void> {
-    return this.http.put<void>(`${this.url}/reservation`, updatedReservation);
+    return this.http.put<void>(`${this.url}/reservation/${id}`, updatedReservation);
   }
 
   //DELETE
